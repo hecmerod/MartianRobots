@@ -15,6 +15,18 @@ exports.createGrid = async (req, res) => {
     )
   }
 
+  if (x > 50 || y > 50) {
+    cache.del('grid')
+    cache.del('robot')
+
+    return res.send(
+      `<div>
+        <h2>Error</h2> 
+        <p> x or y can't be > 50, grid not created </p>
+      </div>`
+    )
+  }
+
   cache.set('grid', { x: parseInt(x), y: parseInt(y) })
   cache.del('robot')
 
