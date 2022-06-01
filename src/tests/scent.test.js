@@ -17,3 +17,15 @@ test('scent has been created', async () => {
 
   expect(scent).not.toBe(undefined)
   })
+
+  test('if theres a scent robot doesnt fall', async () => {
+    await api.get('/robot/move/F').expect(200)  
+    
+    cache.set('robot', {x: 0, y: 0, facing: 'S'})
+
+    await api.get('/robot/move/RRFRR').expect(200)
+
+    const robot = cache.get('robot')
+
+    expect(robot).toStrictEqual({x: 0, y: 1, facing: 'S'})
+})
