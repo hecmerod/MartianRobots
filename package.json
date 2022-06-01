@@ -1,0 +1,34 @@
+{
+  "name": "martianrobots",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon -L index.js",
+    "test": "jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hecmerod/MartianRobots.git"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "Héctor Mediavilla Rodríguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hecmerod/MartianRobots/issues"
+  },
+  "homepage": "https://github.com/hecmerod/MartianRobots#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jest": "^27.5.1",
+    "node-cache": "^5.1.2",
+    "supertest": "^6.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
