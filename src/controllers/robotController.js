@@ -13,7 +13,7 @@ exports.deploy = async (req, res) => {
   const grid = cache.get('grid')
 
   if (!grid) {
-    cache.del('robot')
+    cache.flushAll();
     return res.send(gridNotCreated)
   }
 
@@ -32,6 +32,8 @@ exports.deploy = async (req, res) => {
     return res.send(mustFace)
   }
 
+  cache.flushAll();
+  cache.set('grid', grid)
   cache.set('robot', { x: parseInt(x), y: parseInt(y), facing })
 
   return res.send(robotDeployed(x, y))

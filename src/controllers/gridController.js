@@ -19,8 +19,9 @@ exports.createGrid = async (req, res) => {
     return res.send(xyGreaterThan50)
   }
 
+  cache.flushAll();
   cache.set('grid', { x: parseInt(x), y: parseInt(y) })
-  cache.del('robot')
+  
 
   return res.send(gridCreated(x, y))
 }
