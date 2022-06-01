@@ -13,6 +13,7 @@ exports.deploy = async (req, res) => {
   const grid = cache.get('grid')
 
   if (!grid) {
+    cache.del('robot')
     return res.send(gridNotCreated)
   }
 
