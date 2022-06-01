@@ -3,6 +3,11 @@ exports.gridNotCreated = `<div>
 <p> Grid has to be created</p>
 </div>`
 
+exports.deployedOutside = `<div>
+<h2>Error</h2> 
+<p> Cant deploy a robot outside the grid</p>
+</div>`
+
 exports.xyNegative = `<div>
 <h2>Error</h2> 
 <p> x or y can't be negative, robot not deployed </p>

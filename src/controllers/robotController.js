@@ -4,15 +4,22 @@ const { moveRobot } = require('../services/moveRobot')
 const {
   gridNotCreated, instructionsBadlyFormatted, movedRobot,
   mustFace, robotLost, robotNotDeployed, robotDeployed,
-  tooManyInstructions, xyNegative
+  tooManyInstructions, xyNegative, deployedOutside
 } = require('../../resources/robotHTMLResponses')
 
 exports.deploy = async (req, res) => {
   const { x, y, facing } = req.params
 
-  if (!cache.get('grid')) {
+  const grid = cache.get('grid')
+
+  if (!grid) {
     cache.del('robot')
     return res.send(gridNotCreated)
+  }
+
+  if (x > grid.x || y > grid.y) {
+    cache.del('robot')
+    return res.send(deployedOutside)
   }
 
   if (x <= 0 || y <= 0) {
@@ -27,7 +34,7 @@ exports.deploy = async (req, res) => {
 
   cache.set('robot', { x: parseInt(x), y: parseInt(y), facing })
 
-  return res.send(robotDeployed(x,y))
+  return res.send(robotDeployed(x, y))
 }
 
 exports.move = async (req, res) => {

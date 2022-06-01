@@ -1,4 +1,4 @@
-const {checkForScent, deployScent} = require('./scentManager')
+const { checkForScent, deployScent } = require('./scentManager')
 
 function rotateLeft (robot) {
   const { facing } = robot
@@ -57,9 +57,9 @@ exports.moveRobot = (grid, robot, instructions) => {
         const movement = moveForward(grid, robot)
         robot = movement.robot
 
-        if (movement.err && ! checkForScent(robot)) { 
+        if (movement.err && !checkForScent(robot)) {
           deployScent(robot)
-          return { x: robot.x, y: robot.y, facing: robot.facing, lost: 'LOST' } 
+          return { x: robot.x, y: robot.y, facing: robot.facing, lost: 'LOST' }
         }
     }
   }

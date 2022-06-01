@@ -1,6 +1,6 @@
 const cache = require('../middleware/cache')
 
-const {gridCreated,xyGreaterThan50,xyNegative} = require('../../resources/gridHTMLResponses')
+const { gridCreated, xyGreaterThan50, xyNegative } = require('../../resources/gridHTMLResponses')
 
 exports.createGrid = async (req, res) => {
   const { x, y } = req.params
@@ -22,5 +22,5 @@ exports.createGrid = async (req, res) => {
   cache.set('grid', { x: parseInt(x), y: parseInt(y) })
   cache.del('robot')
 
-  return res.send(gridCreated(x,y))
+  return res.send(gridCreated(x, y))
 }
