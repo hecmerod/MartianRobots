@@ -24,9 +24,4 @@ test('x or y cant be negative', async () => {
   await api.get(`/grid/create/${x}/${y}`).expect(200)
   grid = cache.get('grid')
   expect(grid).toBe(undefined)
-
-  x = -5, y = -6
-  await api.get(`/grid/create/${x}/${y}`).expect(200)
-  grid = cache.get('grid')
-  expect(grid).toBe(undefined)
 })
