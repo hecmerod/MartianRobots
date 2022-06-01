@@ -49,3 +49,13 @@ test('third input on /robot/move/instructions moves the robot', async () => {
 
   expect(robot).toStrictEqual({ x: 4, y: 2, facing: 'N' })
 })
+
+test('/robot/move/instructions should not have more than 100 instructions', async () => {
+  cache.set('robot', { x: 0, y: 3, facing: 'N' })
+
+  await api.get(`/robot/move/${'F'.repeat(101)}`).expect(200)
+
+  const robot = cache.get('robot')
+
+  expect(robot).toStrictEqual({ x: 0, y: 3, facing: 'N' })
+})

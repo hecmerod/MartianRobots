@@ -67,6 +67,13 @@ exports.move = async (req, res) => {
     )
   }
 
+  if(instructions.length > 100)return res.send(
+    `<div>
+      <h2>Error</h2> 
+      <p> Can't send more than 100 instructions </p>
+    </div>`
+    )
+
   for (let i = 0; i < instructions.length; i++) {
     if (!(instructions.charAt(i) == 'L' || instructions.charAt(i) == 'R' || instructions.charAt(i) == 'F')) {
       return res.send(
